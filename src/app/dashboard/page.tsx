@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import Button from '@/components/Button/Button';
 import { useAuth } from '@/contexts/AuthContext';
 import styles from './dashboard.module.scss';
@@ -27,7 +28,7 @@ const DashboardPage: React.FC = () => {
     return (
       <div className={styles.loadingContainer}>
         <div className={styles.spinner}></div>
-        <p> in loading ...</p>
+        <p> در حال بارگذاری ...</p>
       </div>
     );
   }
@@ -42,7 +43,9 @@ const DashboardPage: React.FC = () => {
       <header className={styles.dashboardHeader}>
         <div className={styles.headerContent}>
           <div className={styles.userInfo}>
-            <img 
+            <Image
+              width={100}
+              height={100}
               src={user.picture.medium} 
               alt={`${user.name.first} ${user.name.last}`}
               className={styles.userAvatar}
@@ -98,37 +101,7 @@ const DashboardPage: React.FC = () => {
             </div>
           </div>
 
-          <div className={styles.statsGrid}>
-            <div className={styles.statCard}>
-              <div className={styles.statIcon}>📊</div>
-              <div className={styles.statInfo}>
-                <h4 className={styles.statTitle}>آمار کلی</h4>
-                <p className={styles.statDescription}>
-                  اطلاعات آماری سیستم
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.statCard}>
-              <div className={styles.statIcon}>⚙️</div>
-              <div className={styles.statInfo}>
-                <h4 className={styles.statTitle}>تنظیمات</h4>
-                <p className={styles.statDescription}>
-                  مدیریت تنظیمات کاربری
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.statCard}>
-              <div className={styles.statIcon}>📋</div>
-              <div className={styles.statInfo}>
-                <h4 className={styles.statTitle}>گزارش‌ها</h4>
-                <p className={styles.statDescription}>
-                  مشاهده گزارش‌های سیستم
-                </p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </main>
     </div>
